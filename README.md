@@ -65,3 +65,25 @@ rebuild only replaces that dylib, so the assembled result is equivalent
 to the verified v2 ipa with a freshly compiled tweak. See
 `CHANGELOG_v2.md` for the full v2 change list (what was wrong in v1 and
 what changed).
+
+---
+
+# Private Judges Workspace (independent app)
+
+`judges-workspace/` contains the independent BOTB Private Judges Edition — a
+standalone SwiftUI app (not the original BOTB application, and no claim to be).
+Source-of-truth archive with full documentation: the `Botb01` repository.
+
+Workflow `.github/workflows/judges.yml` builds it on every change to
+`judges-workspace/**`:
+
+1. Python coordinate-engine regression suite (50 tests, mirrors the Swift engine).
+2. Swift seven-judge core checks (`swiftc` compile + execute).
+3. `xcodegen generate` + `xcodebuild -sdk iphoneos CODE_SIGNING_ALLOWED=NO`.
+4. Packages `Private_Judges_Workspace.ipa`, verifies bundle id/plist/zip,
+   and publishes it as a Release asset with its SHA-256
+   (tag `private-judges-workspace-v1.2.0`).
+
+App v1.2.0: 4-tab dashboard (Judge submission / Local seven-judge panel /
+Multi-judge comparison with human approval gate / AI proposals kept strictly
+separate from consensus), coordinate-synced loupe magnifier, JSON export.

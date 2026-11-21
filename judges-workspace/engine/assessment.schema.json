@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://botb-judges-edition.local/schemas/assessment.schema.json",
+  "title": "BOTB Judges Edition - Multi-judge Assessment Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "assessment_id",
+    "competition_id",
+    "image_id",
+    "consensus_method",
+    "tolerance_px",
+    "judges",
+    "consensus",
+    "approval",
+    "audit",
+    "engine_version"
+  ],
+  "properties": {
+    "assessment_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]{1,128}$",
+      "description": "Stable identifier for this assessment."
+    },
+    "competition_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]{1,128}$",
+      "description": "Competition identity issued by the organizer."
+    },
+    "image_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 of raw image bytes. Filenames never identify images."
+    },
+    "consensus_method": {
+      "type": "string",
+      "enum": ["geometric_median", "per_axis_median"]
+    },
+    "tolerance_px": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10000
+    },
+    "judges": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["judge_id", "crosshair", "submitted_at", "note"],
+        "properties": {
+          "judge_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._-]{1,128}$"
+          },
+          "crosshair": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["x_px", "y_px", "image_width_px", "image_height_px"],
+            "properties": {
+              "x_px": { "type": "integer", "minimum": 0 },
+              "y_px": { "type": "integer", "minimum": 0 },
+              "image_width_px": { "type": "integer", "minimum": 2 },
+              "image_height_px": { "type": "integer", "minimum": 2 }
+            }
+          },
+          "submitted_at": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+          },
+          "note": { "type": "string", "maxLength": 2000 }
+        }
+      }
+    },
+    "consensus": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["method", "x_px", "y_px", "raw_x", "raw_y", "engine_version",
+                   "tolerance_px", "max_spread_px", "agreement_ratio", "n_judges"],
+      "properties": {
+        "method": { "type": "string", "enum": ["geometric_median", "per_axis_median"] },
+        "x_px": { "type": "integer", "minimum": 0 },
+        "y_px": { "type": "integer", "minimum": 0 },
+        "raw_x": { "type": "number" },
+        "raw_y": { "type": "number" },
+        "engine_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "tolerance_px": { "type": "number", "minimum": 0 },
+        "max_spread_px": { "type": "number", "minimum": 0 },
+        "agreement_ratio": { "type": "number", "minimum": 0, "maximum": 1 },
+        "n_judges": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "approver", "decided_at"],
+      "properties": {
+        "status": { "type": "string", "enum": ["PENDING", "APPROVED", "REJECTED"] },
+        "approver": { "type": ["string", "null"], "pattern": "^[A-Za-z0-9._-]{1,128}$" },
+        "decided_at": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+        }
+      }
+    },
+    "ai_proposals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "AI proposals are recorded separately and NEVER enter judges[]."
+      }
+    },
+    "audit": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["timestamp", "actor", "action", "details",
+                     "prev_entry_hash", "entry_hash"],
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+          },
+          "actor": { "type": "string", "minLength": 1 },
+          "action": { "type": "string", "minLength": 1 },
+          "details": { "type": "object" },
+          "prev_entry_hash": { "type": "string", "pattern": "^(GENESIS|[a-f0-9]{64})$" },
+          "entry_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+        }
+      }
+    },
+    "engine_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "assessment_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

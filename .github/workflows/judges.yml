@@ -1,0 +1,136 @@
+name: Build Private Judges Workspace unsigned IPA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'judges-workspace/**'
+      - '.github/workflows/judges.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: judges-workspace-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Python regression checks (coordinate engine reference)
+        working-directory: judges-workspace/engine
+        run: python3 -m unittest test_auth_model test_coordinate_engine test_crosshair_records test_multi_judge -v
+
+      - name: Swift core checks (SevenJudgePanel)
+        working-directory: judges-workspace
+        run: |
+          set -euo pipefail
+          mkdir -p ../build/core-checks
+          swiftc CoordinateEngine.swift SevenJudgePanel.swift SevenJudgePanelChecks.swift -o ../build/core-checks/seven-judge-checks
+          ../build/core-checks/seven-judge-checks
+          echo "Swift seven-judge core checks: PASS"
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        working-directory: judges-workspace
+        run: xcodegen generate --spec project.yml
+
+      - name: Build unsigned app (sdk iphoneos, CODE_SIGNING_ALLOWED=NO)
+        run: |
+          set -euo pipefail
+          xcodebuild -project judges-workspace/BOTBJudgesEdition.xcodeproj -target BOTBJudgesEdition \
+            -configuration Release -sdk iphoneos \
+            SYMROOT="$PWD/build/sym" OBJROOT="$PWD/build/obj" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY='' \
+            COMPILER_INDEX_STORE_ENABLE=NO build 2>&1 | tee build_log.txt
+          test -d "build/sym/Release-iphoneos/BOTB Judges Edition.app"
+
+      - name: Package and verify unsigned IPA
+        run: |
+          set -euo pipefail
+          APP="build/sym/Release-iphoneos/BOTB Judges Edition.app"
+          plutil -lint "$APP/Info.plist"
+          test "$(plutil -extract CFBundleIdentifier raw "$APP/Info.plist")" = "com.botb.judges.edition"
+          rm -rf Payload
+          mkdir Payload
+          cp -R "$APP" Payload/
+          zip -qry Private_Judges_Workspace.ipa Payload
+          unzip -t Private_Judges_Workspace.ipa > /dev/null
+          echo '--- SHA-256 ---'
+          shasum -a 256 Private_Judges_Workspace.ipa | tee Private_Judges_Workspace.ipa.sha256
+          ls -l Private_Judges_Workspace.ipa
+
+      - name: Upload build log artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: judges_build_log
+          path: build_log.txt
+          if-no-files-found: ignore
+
+      - name: Publish release (unsigned ipa + sha256)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TAG=private-judges-workspace-v1.2.0
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" Private_Judges_Workspace.ipa Private_Judges_Workspace.ipa.sha256 --clobber
+          else
+            gh release create "$TAG" Private_Judges_Workspace.ipa Private_Judges_Workspace.ipa.sha256 \
+              --title 'Private Judges Workspace v1.2.0 — UNSIGNED ipa' \
+              --notes 'Independent BOTB Private Judges Edition (SwiftUI; tabs: Judge submission, Local seven-judge panel, Multi-judge comparison with human approval gate, AI proposals kept strictly separate from consensus). Built with xcodebuild (sdk iphoneos, CODE_SIGNING_ALLOWED=NO, arm64). Coordinate engine regression: Python 50 tests + Swift seven-judge core checks PASS. New in v1.2.0: 4-tab dashboard, loupe magnifier synchronized to the crosshair (same coordinate engine, no second mapping), JSON export for records and assessments. Intentionally UNSIGNED — sign with your own certificate (see SIGNING_INSTRUCTIONS.md in the Botb01 source archive). This is not the original BOTB application and makes no such claim.'
+          fi
+
+      - name: Record build evidence
+        if: always()
+        shell: python
+        run: |
+          import hashlib, json, os, pathlib, plistlib, subprocess, zipfile
+          ipa = pathlib.Path('Private_Judges_Workspace.ipa')
+          report = {
+              'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'scope': 'Independent Private Judges Workspace app (SwiftUI); not the original BOTB application',
+              'iphone_runtime_test': 'NOT PERFORMED',
+          }
+          if ipa.exists():
+              report['ipa_bytes'] = ipa.stat().st_size
+              report['ipa_sha256'] = hashlib.sha256(ipa.read_bytes()).hexdigest()
+              with zipfile.ZipFile(ipa) as z:
+                  info = plistlib.loads(z.read('Payload/BOTB Judges Edition.app/Info.plist'))
+                  report['bundle_id'] = info.get('CFBundleIdentifier')
+                  report['version'] = info.get('CFBundleShortVersionString')
+                  exe = 'Payload/BOTB Judges Edition.app/' + info['CFBundleExecutable']
+                  with z.open(exe) as f:
+                      report['executable_magic_hex'] = f.read(4).hex()
+          log = pathlib.Path('build_log.txt')
+          report['build_log_tail_available'] = log.exists()
+          out = pathlib.Path('verification/judges-workspace')
+          out.mkdir(parents=True, exist_ok=True)
+          text = json.dumps(report, indent=2) + '\n'
+          (out / 'result.json').write_text(text)
+          (out / 'build-log-tail.txt').write_text(
+              log.read_text(errors='replace')[-40000:] if log.exists()
+              else 'iOS build log unavailable; inspect failed preceding step.\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('## Private Judges Workspace build evidence\n```json\n' + text + '```\n')
+
+      - name: Publish build evidence to repository (non-fatal)
+        if: always()
+        run: |
+          test -f verification/judges-workspace/result.json || exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add verification/judges-workspace/result.json verification/judges-workspace/build-log-tail.txt || exit 0
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record Private Judges Workspace build evidence' || exit 0
+            git pull --rebase origin main || true
+            git push origin HEAD:main || echo 'evidence push skipped (non-fatal)'
+          fi

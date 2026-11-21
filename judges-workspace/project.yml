@@ -1,0 +1,38 @@
+name: BOTBJudgesEdition
+options:
+  bundleIdPrefix: com.botb.judges
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+targets:
+  BOTBJudgesEdition:
+    type: application
+    platform: iOS
+    sources:
+      - path: AIProposalView.swift
+      - path: AssessmentModels.swift
+      - path: AuthGate.swift
+      - path: BOTBJudgesApp.swift
+      - path: CoordinateEngine.swift
+      - path: CrosshairOverlay.swift
+      - path: JudgeSubmissionView.swift
+      - path: MultiJudgeCompareView.swift
+      - path: RecordsStore.swift
+      - path: SevenJudgePanel.swift
+      - path: SevenJudgePanelView.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.botb.judges.edition
+        PRODUCT_NAME: BOTB Judges Edition
+        MARKETING_VERSION: "1.2.0"
+        CURRENT_PROJECT_VERSION: "3"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_CFBundleDisplayName: BOTB Judges Edition
+        INFOPLIST_KEY_NSPhotoLibraryUsageDescription: Choose a shared assessment image for seven judges.
+        SWIFT_VERSION: "5.9"
+        IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGNING_ALLOWED: "NO"
+        CODE_SIGNING_REQUIRED: "NO"
