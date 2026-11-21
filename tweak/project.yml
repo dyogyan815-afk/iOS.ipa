@@ -1,0 +1,29 @@
+name: BOTBTweak
+options:
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: "16.1"
+
+targets:
+  BOTBTweak:
+    type: library.dynamic
+    platform: iOS
+    sources:
+      - path: BOTBTweak
+    settings:
+      base:
+        PRODUCT_NAME: BOTBTweak
+        EXECUTABLE_PREFIX: ""
+        MACH_O_TYPE: mh_dylib
+        GCC_ENABLE_OBJC_ARC: "YES"
+        CLANG_ENABLE_MODULES: "NO"
+        IPHONEOS_DEPLOYMENT_TARGET: "16.1"
+        ARCHS: arm64
+        ONLY_ACTIVE_ARCH: "NO"
+        GCC_OPTIMIZATION_LEVEL: "2"
+        OTHER_CFLAGS: "$(inherited) -Wno-error=unused-variable"
+        OTHER_LDFLAGS: "$(inherited) -framework Foundation -framework UIKit -framework CoreGraphics -lSystem"
+        DYLIB_INSTALL_NAME_BASE: "@executable_path"
+        CODE_SIGNING_ALLOWED: "NO"
+        CODE_SIGN_IDENTITY: ""
+        DEAD_CODE_STRIPPING: "YES"

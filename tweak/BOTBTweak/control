@@ -1,0 +1,8 @@
+Package: com.research.botbtweak
+Name: BOTBTweak
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Description: Research observation tweak for BOTB Spot the Ball (image capture + crosshair overlay diagnostics). Never submits entries.
+Maintainer: BOTB AI Research
+Author: BOTB AI Research
+Section: Tweaks
