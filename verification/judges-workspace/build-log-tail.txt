@@ -1,0 +1,208 @@
+Command line invocation:
+    /Applications/Xcode_16.4.app/Contents/Developer/usr/bin/xcodebuild -project judges-workspace/BOTBJudgesEdition.xcodeproj -target BOTBJudgesEdition -configuration Release -sdk iphoneos SYMROOT=/Users/runner/work/iOS.ipa/iOS.ipa/build/sym OBJROOT=/Users/runner/work/iOS.ipa/iOS.ipa/build/obj CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= COMPILER_INDEX_STORE_ENABLE=NO build
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = 
+    CODE_SIGNING_ALLOWED = NO
+    CODE_SIGNING_REQUIRED = NO
+    COMPILER_INDEX_STORE_ENABLE = NO
+    OBJROOT = /Users/runner/work/iOS.ipa/iOS.ipa/build/obj
+    SDKROOT = iphoneos18.5
+    SYMROOT = /Users/runner/work/iOS.ipa/iOS.ipa/build/sym
+
+note: Using codesigning identity override: 
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'BOTBJudgesEdition' in project 'BOTBJudgesEdition' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 1af6fde333fa7209abea1b81f23eec23
+Build description path: /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/XCBuildData/1af6fde333fa7209abea1b81f23eec23.xcbuilddata
+CreateBuildDirectory /Users/runner/work/iOS.ipa/iOS.ipa/build/sym
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/BOTBJudgesEdition.xcodeproj
+    builtin-create-build-directory /Users/runner/work/iOS.ipa/iOS.ipa/build/sym
+
+CreateBuildDirectory /Users/runner/work/iOS.ipa/iOS.ipa/build/obj
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/BOTBJudgesEdition.xcodeproj
+    builtin-create-build-directory /Users/runner/work/iOS.ipa/iOS.ipa/build/obj
+
+ClangStatCache /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk /var/folders/9d/l02zfgrs7c16twd3wbpdmhkc0000gn/C/com.apple.DeveloperTools/16.4-16F6/Xcode/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/BOTBJudgesEdition.xcodeproj
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -o /var/folders/9d/l02zfgrs7c16twd3wbpdmhkc0000gn/C/com.apple.DeveloperTools/16.4-16F6/Xcode/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition-d1adfcc267ddb4deec46c2e0cbf91127-VFS-iphoneos/all-product-headers.yaml
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/BOTBJudgesEdition.xcodeproj
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition-d1adfcc267ddb4deec46c2e0cbf91127-VFS-iphoneos/all-product-headers.yaml
+
+CreateBuildDirectory /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/BOTBJudgesEdition.xcodeproj
+    builtin-create-build-directory /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos
+
+CreateBuildDirectory /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/EagerLinkingTBDs/Release-iphoneos
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/BOTBJudgesEdition.xcodeproj
+    builtin-create-build-directory /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/EagerLinkingTBDs/Release-iphoneos
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/empty-BOTB\ Judges\ Edition.plist (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/empty-BOTB\ Judges\ Edition.plist
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTBJudgesEdition_const_extract_protocols.json (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTBJudgesEdition_const_extract_protocols.json
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTBJudgesEdition-OutputFileMap.json (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTBJudgesEdition-OutputFileMap.json
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition.SwiftFileList (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition.SwiftFileList
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition.SwiftConstValuesFileList (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition.LinkFileList (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition.LinkFileList
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition.hmap (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition.hmap
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition.DependencyStaticMetadataFileList (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition.DependencyMetadataFileList (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-project-headers.hmap (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-project-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-own-target-headers.hmap (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-generated-files.hmap (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-generated-files.hmap
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-all-target-headers.hmap (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-all-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-all-non-framework-target-headers.hmap (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    write-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-all-non-framework-target-headers.hmap
+
+MkDir /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    /bin/mkdir -p /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app
+
+ProcessInfoPlistFile /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/Info.plist /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/empty-BOTB\ Judges\ Edition.plist (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    builtin-infoPlistUtility /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/empty-BOTB\ Judges\ Edition.plist -producttype com.apple.product-type.application -genpkginfo /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/PkgInfo -expandbuildsettings -format binary -platform iphoneos -requiredArchitecture arm64 -o /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/Info.plist
+
+SwiftDriver BOTBJudgesEdition normal arm64 com.apple.xcode.tools.swift.compiler (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    builtin-SwiftDriver -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name BOTB_Judges_Edition -O -whole-module-optimization -enforce-exclusivity\=checked @/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition.SwiftFileList -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -target arm64-apple-ios16.0 -g -Xfrontend -serialize-debugging-options -swift-version 5 -I /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos -F /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos -c -num-threads 3 -Xcc -ivfsstatcache -Xcc /var/folders/9d/l02zfgrs7c16twd3wbpdmhkc0000gn/C/com.apple.DeveloperTools/16.4-16F6/Xcode/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -output-file-map /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTBJudgesEdition-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition.swiftmodule -validate-clang-modules-once -clang-build-session-file /var/folders/9d/l02zfgrs7c16twd3wbpdmhkc0000gn/C/org.llvm.clang/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTBJudgesEdition_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-generated-files.hmap -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-own-target-headers.hmap -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-project-headers.hmap -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/include -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/DerivedSources -emit-objc-header -emit-objc-header-path /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition-Swift.h -working-directory /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace -no-emit-module-separately-wmo
+
+SwiftCompile normal arm64 Compiling\ AIProposalView.swift,\ AssessmentModels.swift,\ AuthGate.swift,\ BOTBJudgesApp.swift,\ CoordinateEngine.swift,\ CrosshairOverlay.swift,\ JudgeSubmissionView.swift,\ MultiJudgeCompareView.swift,\ RecordsStore.swift,\ SevenJudgePanel.swift,\ SevenJudgePanelView.swift /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/AIProposalView.swift /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/AssessmentModels.swift /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/AuthGate.swift /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/BOTBJudgesApp.swift /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/CoordinateEngine.swift /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/CrosshairOverlay.swift /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/JudgeSubmissionView.swift /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/MultiJudgeCompareView.swift /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/RecordsStore.swift /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/SevenJudgePanel.swift /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace/SevenJudgePanelView.swift (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+
+CompileSwift normal arm64 (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    
+
+SwiftDriver\ Compilation BOTBJudgesEdition normal arm64 com.apple.xcode.tools.swift.compiler (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    builtin-Swift-Compilation -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name BOTB_Judges_Edition -O -whole-module-optimization -enforce-exclusivity\=checked @/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition.SwiftFileList -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -target arm64-apple-ios16.0 -g -Xfrontend -serialize-debugging-options -swift-version 5 -I /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos -F /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos -c -num-threads 3 -Xcc -ivfsstatcache -Xcc /var/folders/9d/l02zfgrs7c16twd3wbpdmhkc0000gn/C/com.apple.DeveloperTools/16.4-16F6/Xcode/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -output-file-map /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTBJudgesEdition-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition.swiftmodule -validate-clang-modules-once -clang-build-session-file /var/folders/9d/l02zfgrs7c16twd3wbpdmhkc0000gn/C/org.llvm.clang/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTBJudgesEdition_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-generated-files.hmap -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-own-target-headers.hmap -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-project-headers.hmap -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/include -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/DerivedSources -emit-objc-header -emit-objc-header-path /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition-Swift.h -working-directory /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace -no-emit-module-separately-wmo
+
+SwiftDriverJobDiscovery normal arm64 Compiling AIProposalView.swift, AssessmentModels.swift, AuthGate.swift, BOTBJudgesApp.swift, CoordinateEngine.swift, CrosshairOverlay.swift, JudgeSubmissionView.swift, MultiJudgeCompareView.swift, RecordsStore.swift, SevenJudgePanel.swift, SevenJudgePanelView.swift (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+
+SwiftDriver\ Compilation\ Requirements BOTBJudgesEdition normal arm64 com.apple.xcode.tools.swift.compiler (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name BOTB_Judges_Edition -O -whole-module-optimization -enforce-exclusivity\=checked @/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition.SwiftFileList -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -target arm64-apple-ios16.0 -g -Xfrontend -serialize-debugging-options -swift-version 5 -I /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos -F /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos -c -num-threads 3 -Xcc -ivfsstatcache -Xcc /var/folders/9d/l02zfgrs7c16twd3wbpdmhkc0000gn/C/com.apple.DeveloperTools/16.4-16F6/Xcode/SDKStatCaches.noindex/iphoneos18.5-22F76-a529daf784b3616c7c04a36aeb7f5c05.sdkstatcache -output-file-map /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTBJudgesEdition-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition.swiftmodule -validate-clang-modules-once -clang-build-session-file /var/folders/9d/l02zfgrs7c16twd3wbpdmhkc0000gn/C/org.llvm.clang/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTBJudgesEdition_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-generated-files.hmap -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-own-target-headers.hmap -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition-project-headers.hmap -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/include -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/DerivedSources/arm64 -Xcc -I/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/DerivedSources -emit-objc-header -emit-objc-header-path /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition-Swift.h -working-directory /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace -no-emit-module-separately-wmo
+
+SwiftMergeGeneratedHeaders /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/DerivedSources/BOTB_Judges_Edition-Swift.h /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition-Swift.h (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    builtin-swiftHeaderTool -arch arm64 /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition-Swift.h -o /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/DerivedSources/BOTB_Judges_Edition-Swift.h
+
+Copy /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB_Judges_Edition.swiftmodule/arm64-apple-ios.swiftdoc /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition.swiftdoc (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition.swiftdoc /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB_Judges_Edition.swiftmodule/arm64-apple-ios.swiftdoc
+
+Copy /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB_Judges_Edition.swiftmodule/arm64-apple-ios.swiftmodule /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition.swiftmodule (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition.swiftmodule /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB_Judges_Edition.swiftmodule/arm64-apple-ios.swiftmodule
+
+Copy /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB_Judges_Edition.swiftmodule/arm64-apple-ios.abi.json /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition.abi.json (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition.abi.json /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB_Judges_Edition.swiftmodule/arm64-apple-ios.abi.json
+
+Copy /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB_Judges_Edition.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition.swiftsourceinfo (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition.swiftsourceinfo /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB_Judges_Edition.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo
+
+Ld /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/BOTB\ Judges\ Edition normal (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios16.0 -isysroot /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -Os -L/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/EagerLinkingTBDs/Release-iphoneos -L/Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos -F/Users/runner/work/iOS.ipa/iOS.ipa/build/obj/EagerLinkingTBDs/Release-iphoneos -F/Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos -filelist /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition.LinkFileList -Xlinker -rpath -Xlinker @executable_path/Frameworks -dead_strip -Xlinker -object_path_lto -Xlinker /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition_lto.o -Xlinker -dependency_info -Xlinker /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB_Judges_Edition.swiftmodule -o /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/BOTB\ Judges\ Edition
+
+ExtractAppIntentsMetadata (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name BOTB_Judges_Edition --sdk-root /Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk --xcode-version 16F6 --platform-family iOS --deployment-target 16.0 --bundle-identifier com.botb.judges.edition --output /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app --target-triple arm64-apple-ios16.0 --binary-file /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/BOTB\ Judges\ Edition --dependency-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition_dependency_info.dat --stringsdata-file /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition.SwiftFileList --metadata-file-list /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition.DependencyMetadataFileList --static-metadata-file-list /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition.DependencyStaticMetadataFileList --swift-const-vals-list /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/Objects-normal/arm64/BOTB\ Judges\ Edition.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-11-21 08:17:55.269 appintentsmetadataprocessor[6497:22835] Starting appintentsmetadataprocessor export
+2026-11-21 08:17:55.277 appintentsmetadataprocessor[6497:22835] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+GenerateDSYMFile /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app.dSYM /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/BOTB\ Judges\ Edition (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/BOTB\ Judges\ Edition -o /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app.dSYM
+
+CopySwiftLibs /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/BOTB\ Judges\ Edition --scan-folder /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/Frameworks --scan-folder /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/PlugIns --scan-folder /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/SystemExtensions --scan-folder /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/Extensions --platform iphoneos --toolchain /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+AppIntentsSSUTraining (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/Info.plist --temp-dir-path /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/ssu --bundle-id com.botb.judges.edition --product-path /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app --extracted-metadata-path /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app/Metadata.appintents --metadata-file-list /Users/runner/work/iOS.ipa/iOS.ipa/build/obj/BOTBJudgesEdition.build/Release-iphoneos/BOTBJudgesEdition.build/BOTB\ Judges\ Edition.DependencyMetadataFileList --archive-ssu-assets
+2026-11-21 08:17:55.323 appintentsnltrainingprocessor[6501:22854] Parsing options for appintentsnltrainingprocessor
+2026-11-21 08:17:55.328 appintentsnltrainingprocessor[6501:22854] No AppShortcuts found - Skipping.
+
+RegisterExecutionPolicyException /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    builtin-RegisterExecutionPolicyException /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app
+
+Validate /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    builtin-validationUtility /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app -infoplist-subpath Info.plist
+warning: All interface orientations must be supported unless the app requires full screen. (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+
+Touch /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app (in target 'BOTBJudgesEdition' from project 'BOTBJudgesEdition')
+    cd /Users/runner/work/iOS.ipa/iOS.ipa/judges-workspace
+    /usr/bin/touch -c /Users/runner/work/iOS.ipa/iOS.ipa/build/sym/Release-iphoneos/BOTB\ Judges\ Edition.app
+
+** BUILD SUCCEEDED **
+

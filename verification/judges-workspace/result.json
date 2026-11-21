@@ -1,0 +1,11 @@
+{
+  "source_commit": "ffc8a293e12c41fd5aa47a505bb40e40984abee3",
+  "scope": "Independent Private Judges Workspace app (SwiftUI); not the original BOTB application",
+  "iphone_runtime_test": "NOT PERFORMED",
+  "ipa_bytes": 295791,
+  "ipa_sha256": "f52e3087043d34645add1f6fb795eaf27e81813affb6651506690ac00aed70ff",
+  "bundle_id": "com.botb.judges.edition",
+  "version": "1.2.0",
+  "executable_magic_hex": "cffaedfe",
+  "build_log_tail_available": true
+}
