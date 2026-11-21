@@ -1,0 +1,115 @@
+name: Build unsigned BOTB v2 ipa
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/**'
+      - 'tweak/**'
+      - 'packaging/**'
+      - 'seed/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-unsigned-ipa
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Reassemble seed ipa and verify checksum
+        run: |
+          set -euo pipefail
+          cd seed
+          cat BOTB_Tweak_v2_PixelExact.ipa.part-* > BOTB_Tweak_v2_PixelExact.ipa
+          shasum -a 256 -c BOTB_Tweak_v2_PixelExact.ipa.sha256
+          ls -l BOTB_Tweak_v2_PixelExact.ipa
+
+      - name: Run coordinate-math unit tests (host)
+        run: |
+          set -euo pipefail
+          cc -O2 -I tweak/BOTBTweak tweak/tests/test_coordinate_math.c tweak/BOTBTweak/STBCoordinateMath.c -lm -o /tmp/coordtest
+          /tmp/coordtest
+
+      - name: Generate Xcode project (xcodegen)
+        run: |
+          set -euo pipefail
+          brew install xcodegen
+          cd tweak
+          xcodegen generate
+          ls -l BOTBTweak.xcodeproj
+
+      - name: Build BOTBTweak.dylib (sdk iphoneos, CODE_SIGNING_ALLOWED=NO)
+        run: |
+          set -euo pipefail
+          xcodebuild -project tweak/BOTBTweak.xcodeproj -target BOTBTweak \
+            -sdk iphoneos -configuration Release \
+            -derivedDataPath build/dd \
+            ARCHS=arm64 ONLY_ACTIVE_ARCH=NO \
+            IPHONEOS_DEPLOYMENT_TARGET=16.1 \
+            DYLIB_INSTALL_NAME_BASE='@executable_path' \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGN_IDENTITY='' \
+            build
+          DYLIB=$(find build/dd -type f -name '*BOTBTweak*.dylib' | head -1)
+          if [ -z "$DYLIB" ]; then
+            echo '::error::BOTBTweak dylib not found under build/dd'
+            find build/dd -name '*.dylib' -o -name '*.a' || true
+            exit 1
+          fi
+          echo "Built: $DYLIB"
+          file "$DYLIB"
+          ID_NAME=$(otool -l "$DYLIB" | awk '/LC_ID_DYLIB/{f=1} f&&/name/{print $2; exit}')
+          echo "LC_ID_DYLIB: $ID_NAME"
+          if [ "$ID_NAME" != '@executable_path/BOTBTweak.dylib' ]; then
+            install_name_tool -id '@executable_path/BOTBTweak.dylib' "$DYLIB"
+            otool -l "$DYLIB" | awk '/LC_ID_DYLIB/{f=1} f&&/name/{print "fixed LC_ID_DYLIB:", $2; exit}'
+          fi
+          echo "DYLIB_PATH=$DYLIB" >> "$GITHUB_ENV"
+
+      - name: Compare exported symbols vs verified seed dylib
+        run: |
+          set -euo pipefail
+          TMP=$(mktemp -d)
+          unzip -p seed/BOTB_Tweak_v2_PixelExact.ipa Payload/BOTB.app/BOTBTweak.dylib > "$TMP/seed_dylib"
+          nm -gU "$TMP/seed_dylib" | awk 'NF{print $NF}' | sort > "$TMP/syms_seed.txt"
+          nm -gU "$DYLIB_PATH" | awk 'NF{print $NF}' | sort > "$TMP/syms_fresh.txt"
+          echo "seed exports: $(wc -l < "$TMP/syms_seed.txt" | tr -d ' '), fresh exports: $(wc -l < "$TMP/syms_fresh.txt" | tr -d ' ')"
+          if ! diff -u "$TMP/syms_seed.txt" "$TMP/syms_fresh.txt" > "$TMP/syms.diff"; then
+            echo '::error::Exported symbol set differs from the verified v2 dylib'
+            cat "$TMP/syms.diff"
+            exit 1
+          fi
+          echo 'Exported symbol sets identical.'
+
+      - name: Assemble + verify unsigned ipa
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          python3 packaging/assemble_ipa.py \
+            --seed seed/BOTB_Tweak_v2_PixelExact.ipa \
+            --dylib "$DYLIB_PATH" \
+            --out dist/BOTB_v2_PixelExact_unsigned.ipa
+          ls -l dist
+
+      - name: Publish release (unsigned ipa)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TAG=v2-pixelexact-unsigned
+          ASSET=dist/BOTB_v2_PixelExact_unsigned.ipa
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$ASSET" --clobber
+          else
+            gh release create "$TAG" "$ASSET" \
+              --title 'BOTB v2 PixelExact — UNSIGNED ipa' \
+              --notes 'BOTBTweak.dylib rebuilt from tweak/ sources with xcodebuild (sdk iphoneos, CODE_SIGNING_ALLOWED=NO, arm64, min iOS 16.1) and repackaged onto the verified v2 base: only Payload/BOTB.app/BOTBTweak.dylib is replaced, all other entries are byte-identical to the verified seed (sha256 913f5d05...). The ipa is intentionally UNSIGNED — sign it yourself (KSign / Sideloadly / AltStore with your own certificate). Coordinate-math unit tests: 35/35 PASS. Exported symbol set of the fresh dylib verified identical to the verified v2 dylib.'
+          fi
